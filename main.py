@@ -54,6 +54,11 @@ def main():
                 print("Game Over!")
                 pygame.quit()  # Properly quit pygame
                 return
+            
+            for bullet in shots:
+                if entity.collides(bullet):
+                    entity.kill()
+                    bullet.kill()
 
 
         pygame.display.flip()  # Update the display
