@@ -46,6 +46,14 @@ def main():
             entity.draw(screen) 
         updatable.update(dt)
 
+        # loop all the asteroids
+        for entity in asteroids:
+            if entity.collides(player):
+                print("Game Over!")
+                pygame.quit()  # Properly quit pygame
+                return
+
+
         pygame.display.flip()  # Update the display
         dt = clock.tick(60) / 1000  # Limit the frame rate to 60 FPS
 
