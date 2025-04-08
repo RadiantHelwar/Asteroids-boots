@@ -13,7 +13,16 @@ def main():
     clock = pygame.time.Clock()  # Create a clock object to control the frame rate
     dt = 0  # Initialize delta time
 
+    #creating groups
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    #assigning groups
+    Player.containers = updatable, drawable
+
+
     player = Player(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
+
 
     while True:
         for event in pygame.event.get():
@@ -24,8 +33,10 @@ def main():
 
         screen.fill((0, 0, 0))  # Fill the screen with black
 
-        player.draw(screen)  # Draw the player
-        player.update(dt)
+        # loop all the drawables
+        for entity in drawable:
+            entity.draw(screen) 
+        updatable.update(dt)
 
         pygame.display.flip()  # Update the display
         dt = clock.tick(60) / 1000  # Limit the frame rate to 60 FPS
