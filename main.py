@@ -9,11 +9,11 @@ def main():
           Screen height: {SCREEN_HEIGHT}\n''')
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-    running = True
-    while running:
+    while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False
+                pygame.quit()  # Properly quit pygame
+                return  # Exit the function and the game loop
 
 
         screen.fill((0, 0, 0))  # Fill the screen with black
