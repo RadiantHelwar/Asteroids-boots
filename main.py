@@ -9,6 +9,9 @@ def main():
           Screen height: {SCREEN_HEIGHT}\n''')
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+    clock = pygame.time.Clock()  # Create a clock object to control the frame rate
+    dt = 0  # Initialize delta time
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -18,6 +21,7 @@ def main():
 
         screen.fill((0, 0, 0))  # Fill the screen with black
         pygame.display.flip()  # Update the display
+        dt = clock.tick(60) / 1000  # Limit the frame rate to 60 FPS
 
 
 if __name__ == "__main__":
