@@ -57,7 +57,7 @@ def main():
             
             for bullet in shots:
                 if entity.collides(bullet):
-                    entity.kill()
+                    entity.split()
                     bullet.kill()
 
 
